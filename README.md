@@ -1,0 +1,1 @@
+# mg-post-generator
