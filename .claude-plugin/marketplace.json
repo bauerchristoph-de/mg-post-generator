@@ -1,0 +1,18 @@
+{
+  "name": "mg-post-generator",
+  "owner": {
+    "name": "Christoph Bauer",
+    "email": "info@bauerchristoph.de"
+  },
+  "metadata": {
+    "description": "AI Post- & Design-Generator — Post-Idee rein, fertiges Design plus Text raus. Zentral gepflegt.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "ai-post-generator",
+      "source": "./plugins/ai-post-generator",
+      "description": "Erstellt fertige Designs im Kunden-CI: Posts, Carousels, Stories, Ads-Statics, Flyer und Druckdateien — inkl. Text im Kunden-Wording. Erste Aktivierung führt das Setup durch (Design-System + Marken-Analyse, geteilt mit dem AI Video-Cutter)."
+    }
+  ]
+}
