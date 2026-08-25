@@ -88,3 +88,29 @@ nicht mehr zuordenbar).
 
 Sicherheitszone für Lesbares: **4 mm** — gerechnet gegen Endformat **minus
 2 mm** Schneidetoleranz.
+
+---
+
+## Weißraum & Zuordnung (Pflichtregeln, Learnings 25.08.2026 KiSpo-Flyer)
+
+**1. Weißraum wird gemessen, nicht geschätzt — auch INNERHALB von Containern.**
+Ein Badge/Pill, das über eine Boxkante ragt, braucht Luft zum nächsten
+Element *unter* der Kante (Icon, Text), nicht nur zur Kante selbst.
+Richtwert: ≥ 3 mm (Druck) / ≥ 24 px (1080er Canvas) zwischen Badge-Unterkante
+und nächstem Inhalt. 1 mm Abstand liest sich als Kollision.
+
+**2. Zuordnung (Gesetz der Nähe): Kleintexte gehören zu ihrem Bezugselement.**
+Fußnoten, Disclaimer, Sternchen-Texte müssen dem Element, auf das sie sich
+beziehen, eindeutig zugeordnet sein: Abstand zum Bezugselement DEUTLICH
+kleiner als zu allem anderen (Faustregel ≥ Faktor 3 — z. B. 1,2 mm zur
+Preis-Box, 4 mm zum nächsten fremden Block). Ein Kleintext, der frei
+zwischen zwei Blöcken schwebt, wirkt unaufgeräumt.
+
+**3. Nachrücken nach Element-Entfernung.**
+Wird ein Element entfernt (Logo-Zeile, Bild, Absatz), wird die Fläche neu
+verteilt — verbleibende Elemente nachrücken/zentrieren, Weißraum bewusst
+oben UND unten verteilen. Nie die Lücke einfach stehen lassen: dann ist der
+Block oben gequetscht und unten leer.
+
+Diese drei Prüfungen gehören in JEDEN Render-Check vor Abgabe
+(siehe technik.md „Messen statt schätzen").
