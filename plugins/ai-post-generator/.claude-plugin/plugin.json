@@ -1,6 +1,6 @@
 {
   "name": "ai-post-generator",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "AI Post- & Design-Generator: Post-Idee rein, fertiges Design plus Text raus — Posts, Carousels, Stories, Meta-Ads-Statics, Flyer und Druckdateien als HTML-Layout mit PDF/PNG-Export, im Design-System und Wording des Kunden. Erste Aktivierung: Setup mit Design-System-Erfassung und Marken-Analyse (geteilter Kundenordner mit dem AI Video-Cutter).",
   "author": {
     "name": "Christoph Bauer",

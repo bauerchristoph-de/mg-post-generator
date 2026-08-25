@@ -112,5 +112,11 @@ verteilt — verbleibende Elemente nachrücken/zentrieren, Weißraum bewusst
 oben UND unten verteilen. Nie die Lücke einfach stehen lassen: dann ist der
 Block oben gequetscht und unten leer.
 
-Diese drei Prüfungen gehören in JEDEN Render-Check vor Abgabe
+**4. Boxen atmen unten.**
+Zwischen letzter Textzeile und Box-Unterkante braucht es spürbar Innen-Luft:
+≥ 5 mm im Druck / ≥ 40 px auf 1080er Canvas (mindestens 1,5× Zeilenhöhe).
+Konsistenz im Dokument: Alle Boxen gleich luftig — die luftigste Box setzt
+den Standard, nicht die engste (Vorder- und Rückseite vergleichen).
+
+Diese vier Prüfungen gehören in JEDEN Render-Check vor Abgabe
 (siehe technik.md „Messen statt schätzen").
