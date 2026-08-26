@@ -1,12 +1,12 @@
 {
   "name": "mg-post-generator",
   "owner": {
-    "name": "Christoph Bauer",
+    "name": "Mehr Geschäft",
     "email": "info@bauerchristoph.de"
   },
   "metadata": {
     "description": "AI Post- & Design-Generator — Post-Idee rein, fertiges Design plus Text raus. Zentral gepflegt.",
-    "version": "0.1.2"
+    "version": "0.1.3"
   },
   "plugins": [
     {
