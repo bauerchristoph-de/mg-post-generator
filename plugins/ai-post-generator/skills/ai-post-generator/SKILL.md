@@ -104,7 +104,7 @@ Wird ein Motiv in einer bereits gebauten Standalone-Datei ersetzt, nicht das Lay
 
 1. **Zielauflösung aus der Elementgröße rechnen:** Breite(mm) × 300 dpi ÷ 25,4 → Pixel. Größer bringt nichts außer Dateigröße.
 2. **Auf das Seitenverhältnis des Elements zuschneiden** (Center-Crop), dann skalieren. JPEG q88 ist für Print ausreichend und spart gegenüber PNG ein Vielfaches.
-3. **Asset im Bündel ersetzen.** In Claude-Design-Exporten liegen Assets als JSON-Map: `"<uuid>": {"mime": "...", "compressed": false, "data": "<base64>"}` — der Schrägstrich im base64 ist dort als Unicode-Escape `/` geschrieben. Beim Einsetzen dieselbe Escaping-Regel anwenden.
+3. **Asset im Bündel ersetzen.** In Claude-Design-Exporten liegen die Assets als JSON-Map mit Feldern `mime`, `compressed` und `data` (base64), adressiert über eine UUID — dieselbe UUID steht im `src` des `img`-Tags. Achtung beim Escaping: Schrägstriche im base64 sind in dieser Map als JSON-Unicode-Escape gespeichert (Backslash gefolgt von `u002F`), nicht als Schrägstrich. Beim Einsetzen des neuen base64 exakt dieselbe Ersetzung anwenden, sonst zerbricht das Bündel.
 4. **`object-position` neu setzen.** Der alte Wert war auf das alte Motiv gezoomt und ist für das neue fast immer falsch.
 5. **Verifizieren:** Eintrag per Regex zurücklesen, base64 dekodieren, auf JPEG-Header `FF D8 FF` prüfen, Dateigröße plausibilisieren. Danach das Rendering ansehen — bei Masken (Dreieck, Kreis, Polygon) zeigt sich erst dort, welcher Bildausschnitt wirklich sichtbar ist.
 
