@@ -1,6 +1,6 @@
 ---
 name: ai-post-generator
-description: Erstellt fertige Designs im CI des Kunden — Instagram-Posts, Carousels, Stories, Meta-Ads-Statics sowie Flyer, Plakate, Postkarten und Druckdateien — als HTML-Layout mit Export nach PDF/PNG, inklusive Text im Kunden-Wording. IMMER verwenden, wenn eine Grafik, ein Post, ein Carousel, ein Flyer oder eine Werbe-Grafik entstehen oder angepasst werden soll — auch bei Formulierungen wie „mach mir einen Post daraus", „Carousel zu diesem Thema", „Flyer bauen", „Story-Grafik", „Ad-Static", „Text aufs Bild", „nachbauen wie im Original". Beim ersten Einsatz für einen neuen Kunden zuerst das Setup führen (references/setup-design.md). NICHT für Videoschnitt (→ ai-video-cutter).
+description: Erstellt fertige Designs im CI des Kunden — Instagram-Posts, Carousels, Stories, Meta-Ads-Statics sowie Flyer, Plakate, Postkarten und Druckdateien — als HTML-Layout mit Export nach PDF/PNG, inklusive Text im Kunden-Wording. IMMER verwenden, wenn eine Grafik, ein Post, ein Carousel, ein Flyer oder eine Werbe-Grafik entstehen oder angepasst werden soll — auch bei Formulierungen wie „mach mir einen Post daraus", „Carousel zu diesem Thema", „Flyer bauen", „Story-Grafik", „Ad-Static", „Text aufs Bild", „nachbauen wie im Original", „Text im Flyer ändern", „Korrekturen einarbeiten". Beim ersten Einsatz für einen neuen Kunden zuerst das Setup führen (references/setup-design.md). NICHT für Videoschnitt (→ ai-video-cutter).
 ---
 
 # AI Post- & Design-Generator
@@ -19,7 +19,7 @@ Post-Idee rein → fertiges Design plus Text raus. Vom Instagram-Carousel bis zu
 1. Installierte Version aus `.claude-plugin/plugin.json` dieses Plugins lesen (Feld `version`) — nie raten, nie hart annehmen.
 2. Aktuelle Version per Web-Abruf holen:
    `https://raw.githubusercontent.com/bauerchristoph-de/mg-post-generator/main/.claude-plugin/marketplace.json` → Feld `metadata.version`.
-3. Ist die Online-Version höher, dem Nutzer EINEN kurzen Hinweis geben: „Für dein AI-Paket gibt es Version X.Y.Z — bitte einmal in den Einstellungen → Plugins beim Marketplace auf ‚Synchronisieren‘ klicken und danach eine neue Unterhaltung starten.“ Danach normal weiterarbeiten — den Arbeitsfluss nie blockieren, den Hinweis nie wiederholen.
+3. Ist die Online-Version höher, dem Nutzer EINEN kurzen Hinweis geben: „Für dein AI-Paket gibt es Version X.Y.Z — bitte einmal in den Einstellungen → Plugins beim Marketplace auf ‚Synchronisieren' klicken und danach eine neue Unterhaltung starten." Danach normal weiterarbeiten — den Arbeitsfluss nie blockieren, den Hinweis nie wiederholen.
 4. Abruf nicht möglich (kein Internetzugriff) → still überspringen, nie erwähnen.
 
 ## Pflicht-Lesereihenfolge
@@ -49,7 +49,37 @@ Der Kunde gibt pro Schritt frei und korrigiert millimetergenau — der Workflow 
 - **„Fixieren" heißt fixieren.** Was abgenommen ist, wird später nicht angerührt. **Rückgängig heißt rückgängig** — exakt der vorherige Zustand.
 - **Messen und Werte nennen, nicht raten.** „Impressum steht 2,5 mm vom Rand" entscheidet der Kunde in Sekunden.
 - **Zweimal dieselbe Anmerkung = strukturelle Ursache suchen** (falsche Referenz, falsches Zentrierverfahren), nicht dritter Versuch mit anderem Wert.
+- **Vorgegebene Formulierungen fachlich prüfen, nicht nur wörtlich einsetzen.** Wenn der gelieferte Wortlaut inhaltlich falsch oder missverständlich ist, das benennen und einen korrekten Vorschlag machen — sonst wird dieselbe Stelle drei Runden lang korrigiert.
 - **Jede Version als neue Nummer** in `projekte/<projekt>/`, Kontrollbilder (PNG je Seite/Slide) immer mitliefern — der Kunde prüft auf dem Handy. Bei Formatvarianten (Endformat/Anschnitt, 1:1/4:5/9:16): jede Änderung in alle Varianten nachziehen.
+
+## Textänderungen in fertigen Layouts — das Zeilenbudget
+
+Ein abgenommenes Layout ist ein Gleichgewicht aus Textlängen und Weißraum. Die häufigste Art, es zu zerstören, ist ein ausgetauschter Satz, der eine Zeile länger ist als der alte. Der Kasten wächst, der Abstand zum nächsten Block bricht — und der Kunde sieht den Fehler vor dem System.
+
+**Regel: Die bestehende Zeile ist das Budget.**
+
+1. Zeichen der alten Fassung zählen. Die neue Fassung darf nicht länger sein.
+2. Kapazität rechnen, nicht schätzen:
+   `Zeichen ≈ Breite(mm) ÷ (0,55 × Schriftgröße in mm)` — 0,55 em ist die mittlere Zeichenbreite gängiger Grotesk-Schriften (Montserrat, Inter, Poppins). Beispiel: 6 pt (2,12 mm) über 122 mm ≈ 105 Zeichen.
+3. **Unteilbare Strings doppelt gewichten.** Eine Mailadresse oder URL bricht nicht um — eine 29 Zeichen lange Adresse am Stück sprengt eine Zeile, die vorher gerade so passte.
+4. **Passt der Wunschtext nicht: vorher kürzen und die Kürzung ansagen.** Nie liefern und den Umbruch den Kunden finden lassen. Zwei Varianten anbieten (was gekürzt wird / was stattdessen entfällt) — der Kunde entscheidet in Sekunden.
+5. Mehrspaltige Elemente (Kursboxen, Feature-Spalten) sind auf gleiche Zeilenzahl gesetzt. Ändert sich eine Spalte, müssen alle dieselbe Zeilenzahl behalten.
+6. Steht auf einer Seite wenig Platz und auf einer anderen viel: die Langfassung dorthin, wo Platz ist, vorne die Kurzfassung. Nicht überall dieselbe Länge erzwingen.
+
+**Nach jeder Textänderung am gerenderten Bild prüfen:** gleiche Zeilenzahl wie vorher? Abstände zu Nachbarblöcken unverändert?
+
+## Text und Overlays — z-index beachten
+
+Textbreite nicht am Satzspiegel ausrichten, sondern am **freien** Bereich. Bevor eine Breite gesetzt wird: prüfen, welche Elemente mit höherem z-index (Foto-Dreiecke, Masken, Formen, randabfallende Flächen) in diese Fläche ragen. Ein Text, der unter einem Overlay verschwindet, ist im Rendering sofort sichtbar — im Code nicht.
+
+## Kundenfeedback vollständig erfassen
+
+Feedback kommt selten als saubere Liste.
+
+- **In Dokumenten steckt der Großteil oft in Bildern.** Bei `.docx`: entpacken und **jedes** Bild in `word/media/` ansehen. Bei PDFs: jede Seite als Bild rendern und ansehen. Der Fließtext allein ist nie das vollständige Feedback — real war es einmal 1 von 6 Anmerkungen.
+- **Position schlägt Wortlaut.** Wo die Anmerkung im Bild steht, sagt, welches Element gemeint ist. Eine Anmerkung neben der Fußnote betrifft die Fußnote, nicht den ähnlich klingenden Fließtext daneben.
+- **Bei Mehrdeutigkeit fragen, nicht raten.** Eine falsch zugeordnete Anmerkung kostet eine komplette Runde plus Rückbau.
+- Am Ende jede einzelne Anmerkung abhaken und dem Kunden als Liste zurückspiegeln — inklusive dem, was bewusst NICHT umgesetzt wurde und warum.
 
 ## Weißraum — die Regel, die am häufigsten reißt
 
@@ -65,8 +95,18 @@ Weißraum ist kein Rest, der übrig bleibt. Er ist ein gesetztes Element.
 - **Gruppen bilden:** Zusammengehöriges (Headline + Subline + CTA + QR) erst intern perfekt stellen, dann als EIN Block verschieben.
 - **Abstände wiederholen, nicht erfinden:** 2–3 Werte tragen ein ganzes Layout. Vorder-/Rückseite bzw. alle Slides sind EIN System (identische Positionen für wiederkehrende Elemente).
 - **Optisch mittig ≠ mathematisch mittig:** Text in Pills sitzt rechnerisch zentriert zu hoch — fester Innenabstand, ~0,2 mm tiefer, am gerenderten Bild kontrollieren.
-- **Fotos nach Motiv beschneiden, nicht nach Rahmen** — Rahmen bleibt, Motiv wandert, alle Gesichter im Bild.
+- **Fotos nach Motiv beschneiden, nicht nach Rahmen** — Rahmen bleibt, Motiv wandert, alle Gesichter im Bild. Anker ist das emotionale Zentrum (die ausdrucksstärksten Gesichter), nicht die geometrische Bildmitte.
 - **Hierarchie durch Größe, nicht durch Menge.** Nie alles gleich groß.
+
+## Bildtausch in gebündelten Standalone-HTML-Dateien
+
+Wird ein Motiv in einer bereits gebauten Standalone-Datei ersetzt, nicht das Layout neu bauen — nur das Asset tauschen:
+
+1. **Zielauflösung aus der Elementgröße rechnen:** Breite(mm) × 300 dpi ÷ 25,4 → Pixel. Größer bringt nichts außer Dateigröße.
+2. **Auf das Seitenverhältnis des Elements zuschneiden** (Center-Crop), dann skalieren. JPEG q88 ist für Print ausreichend und spart gegenüber PNG ein Vielfaches.
+3. **Asset im Bündel ersetzen.** In Claude-Design-Exporten liegen die Assets als JSON-Map mit Feldern `mime`, `compressed` und `data` (base64), adressiert über eine UUID — dieselbe UUID steht im `src` des `img`-Tags. Achtung beim Escaping: Schrägstriche im base64 sind in dieser Map als JSON-Unicode-Escape gespeichert (Backslash gefolgt von `u002F`), nicht als Schrägstrich. Beim Einsetzen des neuen base64 exakt dieselbe Ersetzung anwenden, sonst zerbricht das Bündel.
+4. **`object-position` neu setzen.** Der alte Wert war auf das alte Motiv gezoomt und ist für das neue fast immer falsch.
+5. **Verifizieren:** Eintrag per Regex zurücklesen, base64 dekodieren, auf JPEG-Header `FF D8 FF` prüfen, Dateigröße plausibilisieren. Danach das Rendering ansehen — bei Masken (Dreieck, Kreis, Polygon) zeigt sich erst dort, welcher Bildausschnitt wirklich sichtbar ist.
 
 ## Typografie, Farbe & CI
 
@@ -84,9 +124,12 @@ Weißraum ist kein Rest, der übrig bleibt. Er ist ein gesetztes Element.
 ## Kontrolle vor Lieferung (hartes Gate)
 
 - Ränder links/rechts/oben/unten je Seite **nachgemessen**, kein Element näher als 4 mm an der Schnittkante (Endformat − 2 mm gerechnet)
+- **Jede geänderte Textzeile hat dieselbe Zeilenzahl wie vorher** (Zeilenbudget), Abstände zu Nachbarblöcken unverändert
+- **Kein Text läuft unter ein Element mit höherem z-index**
 - Vorder-/Rückseite bzw. alle Slides deckungsgleich; alle Formatvarianten synchron
 - Bündel-Check: Standalone-HTML geöffnet — Bilder da, Schriften eingebettet? Keine Laufzeit-Pfadlogik.
 - Texte gegen `marken-profil.md` gelesen (Wording, No-Gos)
+- **Jede Anmerkung aus dem Kundenfeedback abgehakt** — auch die in Bildern
 - CMYK/ICC macht die Druckerei — immer dazusagen.
 
 ## Learnings-Abschluss (Pflicht nach jeder finalen Abnahme)
