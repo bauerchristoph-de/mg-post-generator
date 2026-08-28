@@ -14,6 +14,16 @@ Post-Idee rein → fertiges Design plus Text raus. Vom Instagram-Carousel bis zu
 - **Dieses Plugin = Allgemeinwissen.** Gestaltungsregeln, Formate, Technik — zentral gepflegt, kommt per Plugin-Update. Plugin-Dateien nie lokal editieren oder kopieren.
 - **Kundenordner = Kundenwissen.** Wird beim Setup angelegt bzw. **mit dem AI Video-Cutter geteilt**, wenn der Kunde beide Pakete hat: `kunden-config.yaml`, `marken-profil.md` und `assets/` sind EIN gemeinsamer Bestand — nie doppelt anlegen. Design-spezifisch kommen `design-system.md`, `design-learnings.md` und `vorlagen/` dazu. Details: `references/learnings-system.md`.
 
+## Update-Check (einmal pro Unterhaltung, still)
+
+**Installierte Version: 0.1.5**
+
+Beim ersten Einsatz in einer Unterhaltung per Web-Abruf
+`https://raw.githubusercontent.com/bauerchristoph-de/mg-post-generator/main/.claude-plugin/marketplace.json`
+die `metadata.version` lesen und mit der oben genannten installierten Version vergleichen.
+- Online neuer → dem Nutzer EINEN kurzen Hinweis geben: „Für dein AI-Paket gibt es Version X.Y.Z — bitte einmal in den Einstellungen → Plugins beim Marketplace auf ‚Synchronisieren‘ klicken und danach eine neue Unterhaltung starten.“ Danach normal weiterarbeiten — den Arbeitsfluss nie blockieren, den Hinweis nie wiederholen.
+- Abruf nicht möglich (kein Internetzugriff) → still überspringen.
+
 ## Pflicht-Lesereihenfolge
 
 1. `kunden-config.yaml` im Kundenordner — CI, Kanäle. **Fehlt sie, zuerst das Setup führen** (`references/setup-design.md`). Nie mit geratenen Farben/Fonts arbeiten.
