@@ -16,13 +16,11 @@ Post-Idee rein → fertiges Design plus Text raus. Vom Instagram-Carousel bis zu
 
 ## Update-Check (einmal pro Unterhaltung, still)
 
-**Installierte Version: 0.1.5**
-
-Beim ersten Einsatz in einer Unterhaltung per Web-Abruf
-`https://raw.githubusercontent.com/bauerchristoph-de/mg-post-generator/main/.claude-plugin/marketplace.json`
-die `metadata.version` lesen und mit der oben genannten installierten Version vergleichen.
-- Online neuer → dem Nutzer EINEN kurzen Hinweis geben: „Für dein AI-Paket gibt es Version X.Y.Z — bitte einmal in den Einstellungen → Plugins beim Marketplace auf ‚Synchronisieren‘ klicken und danach eine neue Unterhaltung starten.“ Danach normal weiterarbeiten — den Arbeitsfluss nie blockieren, den Hinweis nie wiederholen.
-- Abruf nicht möglich (kein Internetzugriff) → still überspringen.
+1. Installierte Version aus `.claude-plugin/plugin.json` dieses Plugins lesen (Feld `version`) — nie raten, nie hart annehmen.
+2. Aktuelle Version per Web-Abruf holen:
+   `https://raw.githubusercontent.com/bauerchristoph-de/mg-post-generator/main/.claude-plugin/marketplace.json` → Feld `metadata.version`.
+3. Ist die Online-Version höher, dem Nutzer EINEN kurzen Hinweis geben: „Für dein AI-Paket gibt es Version X.Y.Z — bitte einmal in den Einstellungen → Plugins beim Marketplace auf ‚Synchronisieren‘ klicken und danach eine neue Unterhaltung starten.“ Danach normal weiterarbeiten — den Arbeitsfluss nie blockieren, den Hinweis nie wiederholen.
+4. Abruf nicht möglich (kein Internetzugriff) → still überspringen, nie erwähnen.
 
 ## Pflicht-Lesereihenfolge
 
