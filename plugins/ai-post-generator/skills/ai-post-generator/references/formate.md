@@ -89,9 +89,18 @@ nicht mehr zuordenbar).
 Sicherheitszone für Lesbares: **4 mm** — gerechnet gegen Endformat **minus
 2 mm** Schneidetoleranz.
 
+**Wenn eine Vorlage von einem anderen Seitenverhältnis übernommen wird**
+(z. B. ein Roll-Up-Banner als Flyer-Serie, oder ein quadratisches Motiv als
+Story): Elemente und Schriftgrade in der neuen Größe skalieren, aber die
+**vertikale/horizontale Verteilung neu rechnen statt proportional
+mitzuskalieren.** Ein schlankeres oder breiteres Zielformat verändert, wie
+viel freie Fläche zwischen den Blöcken liegt — proportionales Skalieren
+überträgt oft eine Lücke, die im Original nur deshalb passte, weil ein Teil
+der Fläche dort (Ständerfuß, Beschnitt, Rahmen) gar nicht sichtbar war.
+
 ---
 
-## Weißraum & Zuordnung (Pflichtregeln, Learnings 25.08.2026 KiSpo-Flyer)
+## Weißraum & Zuordnung (Pflichtregeln, Learnings 25.08.–09.2026)
 
 **1. Weißraum wird gemessen, nicht geschätzt — auch INNERHALB von Containern.**
 Ein Badge/Pill, das über eine Boxkante ragt, braucht Luft zum nächsten
@@ -118,5 +127,30 @@ Zwischen letzter Textzeile und Box-Unterkante braucht es spürbar Innen-Luft:
 Konsistenz im Dokument: Alle Boxen gleich luftig — die luftigste Box setzt
 den Standard, nicht die engste (Vorder- und Rückseite vergleichen).
 
-Diese vier Prüfungen gehören in JEDEN Render-Check vor Abgabe
-(siehe technik.md „Messen statt schätzen").
+**5. Abstandsstaffelung statt gleicher Lücken.**
+Bleibt nach dem Setzen aller Pflichtelemente noch Fläche übrig, sie NIE
+gleichmäßig auf die vorhandenen Lücken verteilen — mathematisch sauber,
+aber optisch falsch: zusammengehörige Blöcke stehen dann lose nebeneinander
+statt als Gruppe zu lesen. Stattdessen staffeln, jede Ebene deutlich größer
+als die vorige (Richtwert: Faktor ~1,5):
+
+```
+Zeilenabstand  <  Blockabstand  <  Zonenabstand  <  Übergang zur nächsten Sektion
+```
+
+Der Blockabstand ist dabei der **kleinste** Wert, mit dem die Blöcke gerade
+noch getrennt lesen — nicht der größte, den der übrige Platz hergäbe.
+Beispielrechnung aus einem Vier-Ebenen-Layout: 2,0 mm / 6,8 mm / 11,9 mm /
+15,7 mm — jede Stufe ca. das 1,5-Fache der vorigen.
+
+**6. Zwischen zwei Inhaltszonen trägt unten mehr als oben.**
+Der Abstand von einem Block zur nächsten Zone (z. B. letzter Textblock im
+Fließtext → Bildstreifen darunter, letzte Zeile einer Sektion → Beginn der
+nächsten) sollte spürbar größer sein als der Abstand davor (z. B.
+Einleitung → erster Block derselben Sektion) — Richtwert ebenfalls Faktor
+~1,5 (Beispiel: 3,7 mm oben / 6,1 mm unten). Gleiche Abstände oben und unten
+lassen eine Fläche optisch nach vorn kippen; die untere Kante trägt mehr
+Gewicht.
+
+Alle sechs Prüfungen gehören in JEDEN Render-Check vor Abgabe
+(siehe technik.md „Messen statt schätzen" und „Das Mess-Gate").

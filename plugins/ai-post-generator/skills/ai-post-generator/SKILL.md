@@ -30,7 +30,7 @@ Post-Idee rein → fertiges Design plus Text raus. Vom Instagram-Carousel bis zu
 2. `marken-profil.md` — angelernte Brand Voice (für alle Texte auf Designs). Fehlt es: Marken-Analyse aus dem Setup nachholen.
 3. `design-system.md` im Kundenordner — Layout-Master, Farbrollen, Typo-Skala, Referenz-Vorlagen dieses Kunden. **Nie mit einer eigenen Idee starten, wenn eine Vorlage existiert.**
 4. `design-learnings.md` — was dieser Kunde dem System schon beigebracht hat. Anwenden statt wiederholen.
-5. `references/technik.md` — Rezepte für PDF-Analyse, Druck-Setup, Anschnitt, Messen, Export. Kopieren und anpassen, nicht neu erfinden.
+5. `references/technik.md` — Rezepte für PDF-Analyse, Druck-Setup, Anschnitt, Messen, Export, Zentrierung, Mess-Gate. Kopieren und anpassen, nicht neu erfinden.
 6. `references/formate.md` — Canvas-, Safe-Area- und Ads-Formattabellen.
 
 ## Arbeitsweise (verbindlich, mit Freigabe-Schleifen)
@@ -90,13 +90,15 @@ Weißraum ist kein Rest, der übrig bleibt. Er ist ein gesetztes Element.
 - **Oben braucht mehr Luft als man denkt.** Enge oben wirkt sofort billig. Wird unten Platz frei, geht er nach oben — nicht in mehr Inhalt.
 - **Druck-Sicherheitszone: mind. 4 mm zur Schnittkante** für alles Lesbare, gerechnet gegen **Endformat minus 2 mm** (Schneidetoleranz). Positionen immer gegen das Endformat prüfen, nie gegen die Anschnittbox.
 - **Randabfallende Flächen müssen über die Kante hinauslaufen** — 0 mm Abstand reicht nicht, sonst bleibt eine weiße Linie.
+- **Abstandsstaffelung statt gleicher Lücken:** Ist nach dem Setzen aller Elemente noch Fläche frei, sie NIE gleichmäßig auf alle Lücken verteilen — dadurch stehen zusammengehörige Blöcke lose nebeneinander statt als Gruppe zu lesen. Staffeln: Zeilenabstand < Blockabstand < Zonenabstand < Übergang zur nächsten Sektion, jede Stufe rund das 1,5-Fache der vorigen. Der Blockabstand ist der kleinste Wert, mit dem die Blöcke noch getrennt lesen — nicht der größte, den der Platz hergibt. Details/Beispielrechnung: `references/formate.md`.
+- **Zwischen zwei Inhaltszonen trägt unten mehr als oben:** Der Abstand von einem Block zur nächsten Zone (z. B. letzter Textblock → Bildstreifen, letzte Zeile → nächste Sektion) sollte spürbar größer sein als der Abstand davor — rund das 1,5-Fache. Gleiche Abstände oben/unten lassen eine Fläche optisch nach vorn kippen.
 - *Bei Unsicherheit, ob genug Luft ist: Es ist zu wenig Luft.*
 
 ## Optische Balance
 
 - **Gruppen bilden:** Zusammengehöriges (Headline + Subline + CTA + QR) erst intern perfekt stellen, dann als EIN Block verschieben.
 - **Abstände wiederholen, nicht erfinden:** 2–3 Werte tragen ein ganzes Layout. Vorder-/Rückseite bzw. alle Slides sind EIN System (identische Positionen für wiederkehrende Elemente).
-- **Optisch mittig ≠ mathematisch mittig:** Text in Pills sitzt rechnerisch zentriert zu hoch — fester Innenabstand, ~0,2 mm tiefer, am gerenderten Bild kontrollieren.
+- **Optisch mittig heißt: über die Versalienbox zentrieren, nicht über die CSS-Zeilenhöhe.** Die Zeilenhöhe enthält Ober-/Unterlängenraum, den kein Auge sieht — bei manchen Schriften kommt durch einen breiten mitgeführten Zeichensatz (z. B. Devanagari-Unterstützung) eine deutlich zu hohe Zeilenbox dazu. Bezug ist die Versalienbox: Versalienoberkante Zeile 1 bis Grundlinie Zeile n. Formel und Fontmetriken-Auslesen: `references/technik.md`, Abschnitt „Zentrieren über die Versalienbox". Ersetzt die alte Faustregel „Text in Pills sitzt ~0,2 mm zu hoch" — die traf nur zufällig, nicht systematisch, und lag bei anderen Schriften/Größen daneben.
 - **Fotos nach Motiv beschneiden, nicht nach Rahmen** — Rahmen bleibt, Motiv wandert, alle Gesichter im Bild. Anker ist das emotionale Zentrum (die ausdrucksstärksten Gesichter), nicht die geometrische Bildmitte.
 - **Hierarchie durch Größe, nicht durch Menge.** Nie alles gleich groß.
 
@@ -114,7 +116,8 @@ Wird ein Motiv in einer bereits gebauten Standalone-Datei ersetzt, nicht das Lay
 
 - **Schriften aus dem Design-System/Original auslesen** (Familie UND Schnitte), nur diese verwenden. Mindestgrößen: Druck 5,5 pt Rechtliches / 8 pt Fließtext; Social 34 px Fließtext / 72 px Hook bei 1080er Canvas. Zeilenabstand explizit setzen. **Text kürzen schlägt Schrift verkleinern.**
 - **Nur Farben aus dem Design-System des Kunden** — keine neuen Töne, keine Verläufe, wenn die Marke keine hat. Eine Hauptfarbe + ein Akzent plus Weiß/Dunkel.
-- **Logos in der freigegebenen Originaldatei**, nie verzerren, nie umfärben, Schutzraum halten. SVGs ohne Farbdefinition rendern schwarz → dann PNG.
+- **Logos in der freigegebenen Originaldatei**, nie verzerren, nie umfärben, Schutzraum halten. SVGs ohne Farbdefinition rendern schwarz → dann PNG. **Auch wenn schon ein PNG vorliegt, im Kundenordner nach der SVG/EPS-Originaldatei suchen** — ein aus einem Druck-PDF extrahiertes PNG bringt oft einen ungewollten deckenden Hintergrundkasten mit, wo das Original transparent ist. Varianten (farbig/weiß/transparent) am Referenzmedium vergleichen, nicht raten. Sicheres Bearbeiten von SVG-Quelltext (Fallen bei globalem Suchen-Ersetzen, fehlende Schriften): `references/technik.md`.
+- **Siegel/Zertifikate/Partnerlogos, die zu einer Serie gehören** (mehrere Motive/Vorlagen desselben Kunden): auf JEDEM Motiv, in identischer Breite, auf derselben Achse — sie sind Absenderkennung, nicht Schmuck eines einzelnen Themas.
 - **Alle Texte auf Designs im Kunden-Wording** aus `marken-profil.md` — Hook-Muster, Wortschatz, No-Go-Wörter gelten auch auf Grafiken.
 
 ## Social & Ads → `references/formate.md`
@@ -132,6 +135,9 @@ Wird ein Motiv in einer bereits gebauten Standalone-Datei ersetzt, nicht das Lay
 - Bündel-Check: Standalone-HTML geöffnet — Bilder da, Schriften eingebettet? Keine Laufzeit-Pfadlogik.
 - Texte gegen `marken-profil.md` gelesen (Wording, No-Gos)
 - **Jede Anmerkung aus dem Kundenfeedback abgehakt** — auch die in Bildern
+- Zentrierungen über die Versalienbox gerechnet, nicht per Faustregel geschätzt
+- Abstandsstaffelung geprüft: keine Ebene wirkt lose, weil der Platz gleichmäßig statt gestaffelt verteilt wurde
+- Bei Serien mit hohen Präzisionsanforderungen (Druck-Serien, wiederkehrende Vorlagen): ein Mess-Gate-Skript gegen das gerenderte PDF laufen lassen statt nur visuell zu prüfen — `references/technik.md`, Abschnitt „Das Mess-Gate"
 - CMYK/ICC macht die Druckerei — immer dazusagen.
 
 ## Learnings-Abschluss (Pflicht nach jeder finalen Abnahme)
