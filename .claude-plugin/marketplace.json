@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "AI Post- & Design-Generator — Post-Idee rein, fertiges Design plus Text raus. Zentral gepflegt.",
-    "version": "0.2.1"
+    "version": "0.3.0"
   },
   "plugins": [
     {
